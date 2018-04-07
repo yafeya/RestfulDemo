@@ -1,0 +1,26 @@
+{
+  "mahesh": {
+    "id": 1,
+    "name": "mahesh",
+    "password": "password1",
+    "profession": "teacher"
+  },
+  "suresh": {
+    "id": 2,
+    "name": "suresh",
+    "password": "password2",
+    "profession": "librarian"
+  },
+  "ramesh": {
+    "id": 3,
+    "name": "ramesh",
+    "password": "password3",
+    "profession": "clerk"
+  },
+  "frank": {
+    "id": 4,
+    "name": "frank",
+    "password": "password4",
+    "profession": "software engineer"
+  }
+}
