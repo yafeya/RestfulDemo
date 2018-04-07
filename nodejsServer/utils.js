@@ -118,6 +118,12 @@ function doClearUsers(filename) {
     }
 }
 
+exports.toJsonContent = function(users){
+    let raw = toJson(users);
+    let content = JSON.stringify(raw, null, 2);
+    return content;
+}
+
 exports.getUserList = function (filename) {
     return doGetUserList(filename);
 }
