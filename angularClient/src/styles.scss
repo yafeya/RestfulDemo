@@ -1,0 +1,22 @@
+/* You can add global styles to this file, and also import other style files */
+// Setting Alloy's fonts path so webpack underneath angular-cli can resolve and copy font files over
+
+.verticl-items {
+    display: block;
+}
+
+.main-body {
+    width: 100%;
+    height: 500px;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    border: solid 2px lightblue;
+}
+
+.h-60 {
+    height: 60%;
+}
+
+.h-40 {
+    height: 40%;
+}

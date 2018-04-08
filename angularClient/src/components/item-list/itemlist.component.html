@@ -1,0 +1,18 @@
+
+<input type="button" (click)="GetUsers()" value="Get Users">
+<table class="fixed_headers">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Password</th>
+      <th>Profession</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of Users">
+      <td>Apple</td>
+      <td>Red</td>
+      <td>These are red.</td>
+    </tr>
+  </tbody>
+</table>

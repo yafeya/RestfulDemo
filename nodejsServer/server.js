@@ -7,13 +7,6 @@ let filename = 'users.json';//path.join(__dirname, 'users.json');
 
 var app = express();
 
-var server = app.listen(8080, function () {
-    var host = server.address().address;
-    var port = server.address().port;
-
-    console.log(`Please access http://${host}:${port}`);
-});
-
 app.get('/getUserList', function (request, response) {
     let users = utils.getUserList(filename);
     let json = utils.toJsonContent(users);
@@ -57,3 +50,9 @@ function addOrUpdateUser(request) {
     }
     return suc;
 }
+
+var server = app.listen(8080, function () {
+    var port = server.address().port;
+
+    console.log(`listen on port: ${port}`);
+});

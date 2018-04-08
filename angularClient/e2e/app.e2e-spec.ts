@@ -1,14 +1,14 @@
-import { AngularClientPage } from './app.po';
+import { AppPage } from './app.po';
 
-describe('angular-client App', function() {
-  let page: AngularClientPage;
+describe('hello-world-electron App', () => {
+  let page: AppPage;
 
   beforeEach(() => {
-    page = new AngularClientPage();
+    page = new AppPage();
   });
 
-  it('should display message saying app works', () => {
+  it('should display welcome message', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('app works!');
+    expect(page.getParagraphText()).toEqual('Welcome to app!');
   });
 });
