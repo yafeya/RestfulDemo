@@ -1,4 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import * as Services from '../../services/index';
 
 @Component({
@@ -10,7 +11,7 @@ export class ItemListComponent implements OnInit {
 
     private mUsers: any[] = [];
 
-    constructor(private httpClient: Services.HttpClient) {
+    constructor(private httpClient: HttpClient) {
 
     }
 
@@ -19,14 +20,5 @@ export class ItemListComponent implements OnInit {
 
     get Users(): any[] {
         return this.mUsers;
-    }
-
-    async GetUsers() {
-        let users = await this.httpClient.Get('http://127.0.0.1:8080/getUserList', true);
-        if (users != undefined && users != null) {
-            for (let user of users) {
-                this.mUsers.push(user);
-            }
-        }
     }
 }

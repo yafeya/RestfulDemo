@@ -1,11 +1,13 @@
 var utils = require('./utils');
 var User = require('./user');
 var path = require('path');
+var cors = require('cors');
 var express = require('express');
 
 let filename = 'users.json';//path.join(__dirname, 'users.json');
 
 var app = express();
+app.use(cors()); // enable cors.
 
 app.get('/getUserList', function (request, response) {
     let users = utils.getUserList(filename);
