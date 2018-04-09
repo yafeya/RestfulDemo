@@ -11,16 +11,16 @@ export class HttpClient {
 
     constructor(private http: Http) {
 
-        this.errorHandler = (error)=>{
+        this.errorHandler = (error) => {
             console.error(error);
-        }
+        };
 
         this.headers = new Headers();
         this.headers.append('Content-Type', 'application/json');
     }
 
-    /**
-     * Post data to given url 
+    /*
+     * Post data to given url
      * @param url Post url
      * @param data  post data
      */
@@ -31,7 +31,7 @@ export class HttpClient {
             const body = JSON.stringify(data);
 
             if (self.OutputDebugging) {
-                console.info(`Post data url: ${url}\n${body}`);
+                console.log(`Post data url: ${url}\n${body}`);
             }
 
             self.http.post(url, body, { headers: self.headers })
@@ -40,8 +40,9 @@ export class HttpClient {
                     resolve(response.json());
                 })
                 .catch(error => {
-                    if (self.errorHandler)
+                    if (self.errorHandler) {
                         self.errorHandler(error);
+                    }
                     reject(error);
                 }
                 );
@@ -57,7 +58,7 @@ export class HttpClient {
         return new Promise(function (resolve, reject) {
 
             if (self.OutputDebugging) {
-                console.info(`Post data url: ${url}\n${data}`);
+                console.log(`Post data url: ${url}\n${data}`);
             }
 
             self.http.post(url, data, { headers: self.headers })
@@ -66,8 +67,9 @@ export class HttpClient {
                     resolve(response.json());
                 })
                 .catch(error => {
-                    if (self.errorHandler)
+                    if (self.errorHandler) {
                         self.errorHandler(error);
+                    }
                     reject(error);
                 }
                 );
@@ -86,13 +88,14 @@ export class HttpClient {
                     resolve(response.json());
                 })
                 .catch(error => {
-                    if (self.errorHandler)
+                    if (self.errorHandler) {
                         self.errorHandler(error);
+                    }
                     reject(error);
                 });
         });
     }
-    /** 
+    /**
      * Get data from given url in async mode
      * @param url the url to get data.
      */
@@ -100,9 +103,9 @@ export class HttpClient {
         const self = this;
         return new Promise(function (resolve, reject) {
             if (self.OutputDebugging) {
-                console.info(`Get data url: ${url}`);
+                console.log(`Get data url: ${url}`);
             }
-            self.http.get(url, {headers: self.headers})
+            self.http.get(url, { headers: self.headers })
                 .toPromise()
                 .then(response => {
                     if (useRaw) {
@@ -112,8 +115,9 @@ export class HttpClient {
                     }
                 })
                 .catch(error => {
-                    if (self.errorHandler)
+                    if (self.errorHandler) {
                         self.errorHandler(error);
+                    }
                     reject(error);
                 });
         });
@@ -136,8 +140,9 @@ export class HttpClient {
      * @param headers given header
      */
     UseHeader(headers: Headers = this.CreateDefaultHeader()): HttpClient {
-        if (!headers)
+        if (!headers) {
             throw new Error('Given http header is null.');
+        }
         this.headers = headers;
         return this;
     }

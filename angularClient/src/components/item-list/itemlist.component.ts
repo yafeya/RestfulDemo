@@ -11,7 +11,7 @@ export class ItemListComponent implements OnInit {
 
     private mUsers: any[] = [];
 
-    constructor(private httpClient: HttpClient) {
+    constructor(private httpClient: Services.HttpClient) {
 
     }
 
@@ -20,5 +20,9 @@ export class ItemListComponent implements OnInit {
 
     get Users(): any[] {
         return this.mUsers;
+    }
+
+    GetUsers() {
+
     }
 }
