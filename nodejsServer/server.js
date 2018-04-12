@@ -3,11 +3,13 @@ var User = require('./user');
 var path = require('path');
 var cors = require('cors');
 var express = require('express');
+var bodyParser = require('body-parser');
 
 let filename = 'users.json';//path.join(__dirname, 'users.json');
 
 var app = express();
 app.use(cors()); // enable cors.
+app.use(bodyParser());
 
 app.get('/getUserList', function (request, response) {
     let users = utils.getUserList(filename);
@@ -15,18 +17,17 @@ app.get('/getUserList', function (request, response) {
     response.end(json);
 });
 
-app.post('/addUser', function (request, response) {
-    let suc = addOrUpdateUser(request);
-    response.end({ Succeed: suc });
+app.post('/updateUser', function (request, response) {
+    let body = request.body;
+    let suc = addOrUpdateUser(body);
+    let result = { Method: 'updateUser', Succeed: suc };
+    let json = utils.toJsonRaw(result);
+    response.end(json);
 });
 
-app.put('/updateUser', function (request, response) {
-    let suc = addOrUpdateUser(request);
-    response.end({ Succeed: suc });
-});
-
-app.delete('/deleteUser', function (request, response) {
-    let id = request.param('id', -1);
+app.post('/deleteUser', function (request, response) {
+    let body = request.body;
+    let id = body.Id;
     let suc = false;
     if (id > 0) {
         let user = new User();
@@ -34,16 +35,20 @@ app.delete('/deleteUser', function (request, response) {
         utils.deleteUser(filename, user);
         suc = true;
     }
-    response.end({ Succeed: suc });
+    let result = { Succeed: suc };
+    let json = utils.toJsonRaw(result);
+    response.end(json);
 });
 
-function addOrUpdateUser(request) {
-    let name = request.param('name', '');
-    let password = request.param('password', '');
-    let profession = request.param('profession', '');
+function addOrUpdateUser(body) {
+    let id = body.Id;
+    let name = body.Name
+    let password = body.Password;
+    let profession = body.Profession;
     let suc = false;
     if (name != '') {
         let user = new User();
+        user.setId(id);
         user.setName(name);
         user.setPassword(password);
         user.setProfession(profession);

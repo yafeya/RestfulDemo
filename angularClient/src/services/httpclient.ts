@@ -105,7 +105,7 @@ export class HttpClient {
             if (self.OutputDebugging) {
                 console.log(`Get data url: ${url}`);
             }
-            self.http.get(url, { headers: self.headers })
+            self.http.get(url)
                 .toPromise()
                 .then(response => {
                     if (useRaw) {

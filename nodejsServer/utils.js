@@ -124,6 +124,11 @@ exports.toJsonContent = function(users){
     return content;
 }
 
+exports.toJsonRaw = function(raw){
+    let content = JSON.stringify(raw, null, 2);
+    return content;
+}
+
 exports.getUserList = function (filename) {
     return doGetUserList(filename);
 }

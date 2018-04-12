@@ -41,3 +41,28 @@ $alternate_row_background_color: #DDD;
     }
   }
 }
+
+.pointer-cursor {
+  cursor: pointer;
+}
+
+table tr.active td {
+  background-color: lightcoral;
+}
+
+.inline {
+  display: inline-block;
+}
+
+.vertical {
+  display: block;
+}
+
+.w-header {
+  width: 120px;
+}
+
+.w-value {
+  width: 240px;
+  margin-left: 20px;
+}

@@ -20,7 +20,7 @@
   "frank": {
     "id": 4,
     "name": "frank",
-    "password": "password4",
+    "password": "123456",
     "profession": "software engineer"
   }
 }
